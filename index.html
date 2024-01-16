@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="image/ig.gif">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio link на максималках</title>
+    <style>
+        /* Вставьте общие стили здесь */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            text-align: center;
+            background-color: #444;
+            padding: 0.5em;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 0 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #500150;
+        }
+
+        #content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #logo {
+            max-width: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img id="logo" src="https://cdn.discordapp.com/avatars/819547571265470505/8f4d767f746bee61f20ee81b3441963b.png?size=4096" alt="Your Logo">
+        <h1>Slime</h1>
+    </header>
+
+    <nav>
+        <a href="page1.html">Информация</a>
+        <a href="page2.html">Прайс ботов</a>
+        <a href="page3.html">Соц. сети</a>
+        <a href="page5.html">Fame</a>
+        <a href="page6.html">Developer</a>
+        <a href="page7.html">Nitro</a>
+        <a href="page8.html">Паки ботов</a>
+    </nav>
+
+    <section id="content">
+        <!-- Содержимое страниц будет загружаться сюда -->
+    </section>
+
+    <script>
+        // Функция для загрузки содержимого страницы
+        function loadPage(page) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("content").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", page, true);
+            xhttp.send();
+        }
+
+        // Обработка клика по ссылкам в навигации
+        document.querySelectorAll('nav a').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                var pageUrl = this.getAttribute('href');
+                loadPage(pageUrl);
+            });
+        });
+
+        // Загрузка первой страницы при загрузке сайта
+        window.onload = function () {
+            loadPage('page2.html');
+        };
+    </script>
+
+</body>
+
+</html>
